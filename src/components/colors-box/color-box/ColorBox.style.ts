@@ -9,12 +9,20 @@ export const ColorBoxWrapper = styled.div<IndexProp>`
   min-height: 140px;
   color: ${(props) => (props.index <= 5 ? 'grey' : 'white')};
 
-  p{
+  p {
     line-height: 2.2;
   }
 
-  .last{
+  .last {
     text-transform: uppercase;
     font-size: 1.1rem;
+  }
+
+  .copy {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: block;
+    }
   }
 `;

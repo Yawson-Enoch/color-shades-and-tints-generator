@@ -32,7 +32,7 @@ const ColorBox: React.FC<{ color: any; index: number }> = (props) => {
     >
       <p>{hexValue}</p>
       <p>{weight}%</p>
-      {clip && <FaCopy />}
+      {clip &&  <div className='copy'><FaCopy /></div>}
       {copy && <p className='last'>copied to clipboard</p>}
     </ColorBoxWrapper>
   );

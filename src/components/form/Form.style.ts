@@ -21,6 +21,10 @@ export const InputContainer = styled.div`
   @media (min-width: 800px) {
     flex-direction: row;
   }
+
+  label { 
+    text-transform: capitalize;
+  }
 `;
 export const Input = styled.input`
   background: ${({ theme }) => theme.backgroundColor};
