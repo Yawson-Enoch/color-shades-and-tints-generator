@@ -1,14 +1,21 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import {
+  FC,
+  createContext,
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  useState,
+} from 'react';
 import Values from 'values.js';
 
-export const ColorsContext = React.createContext<any>({
+const ColorsContext = createContext<any>({
   list: [],
   onInputTextChange: (e: ChangeEvent<HTMLInputElement>) => {},
   onInputNumberChange: (e: ChangeEvent<HTMLInputElement>) => {},
   onFormSubmit: (e: FormEvent) => {},
 });
 
-const ColorContextProvider: React.FC = (props) => {
+const ColorContextProvider: FC = ({ children }) => {
   const [color, setColor] = useState('blue');
   const [number, setNumber] = useState(10);
   const [list, setList] = useState<any>(new Values('blue').all(10));
@@ -44,9 +51,11 @@ const ColorContextProvider: React.FC = (props) => {
 
   return (
     <ColorsContext.Provider value={contextValues}>
-      {props.children}
+      {children}
     </ColorsContext.Provider>
   );
 };
 
-export default ColorContextProvider;
+const useColorsContext = () => useContext(ColorsContext);
+
+export { ColorContextProvider, useColorsContext };

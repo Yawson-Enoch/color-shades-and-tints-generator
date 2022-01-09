@@ -1,14 +1,13 @@
-import { ColorSectionWrapper } from './ColorSection.style';
-import { ColorsContext } from '../../store/ColorGeneratorContext';
-import { useContext } from 'react';
+import { ColorSectionWrapper } from './ColorSection.styles';
 import ColorBox from './color-box/ColorBox';
+import { useColorsContext } from '../../store/ColorGeneratorContext';
 
 const ColorSection = () => {
-  const mapList = useContext(ColorsContext);
+  const { list } = useColorsContext();
   return (
     <ColorSectionWrapper>
-      {mapList.list.map((color: any, index: number) => {
-        return <ColorBox index = {index} color={color} key={index} />;
+      {list.map((color: any, index: number) => {
+        return <ColorBox index={index} color={color} key={index} />;
       })}
     </ColorSectionWrapper>
   );

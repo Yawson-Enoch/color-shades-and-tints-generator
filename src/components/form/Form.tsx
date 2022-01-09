@@ -1,17 +1,27 @@
-import {useContext} from 'react'
-import { Button, FormContainer, Input, InputContainer } from './Form.style';
-import { ColorsContext } from '../../store/ColorGeneratorContext';
-
+import { Button, FormContainer, Input, InputContainer } from './Form.styles';
+import { useColorsContext } from '../../store/ColorGeneratorContext';
 
 const Form = () => {
-    const form = useContext(ColorsContext);
+  const {
+    onFormSubmit,
+    color,
+    number,
+    onInputNumberChange,
+    onInputTextChange,
+  } = useColorsContext();
 
   return (
-    <FormContainer onSubmit={form.onFormSubmit} >
+    <FormContainer onSubmit={onFormSubmit}>
       <InputContainer>
         <label htmlFor='color'>color</label>
-        <Input type='text' name='color' id='color' placeholder='add color' value={form.color} onChange={form.onInputTextChange}/>
-        
+        <Input
+          type='text'
+          name='color'
+          id='color'
+          placeholder='add color'
+          value={color}
+          onChange={onInputTextChange}
+        />
       </InputContainer>
       <InputContainer>
         <label htmlFor='number'>division</label>
@@ -22,8 +32,8 @@ const Form = () => {
           step='10'
           min='10'
           max='100'
-          value={form.number}
-          onChange={form.onInputNumberChange}
+          value={number}
+          onChange={onInputNumberChange}
         />
       </InputContainer>
       <Button type='submit'>generate</Button>

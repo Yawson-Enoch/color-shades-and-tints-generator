@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { FaCopy } from 'react-icons/fa';
-import { ColorBoxWrapper } from './ColorBox.style';
+import { ColorBoxWrapper } from './ColorBox.styles';
 
-const ColorBox: React.FC<{ color: any; index: number }> = (props) => {
-  const { weight, hex } = props.color;
+const ColorBox = ({ color, index }: any) => {
+  const { weight, hex } = color;
   const hexValue = `#${hex}`;
   const [copy, setCopy] = useState(false);
   const [clip, setClip] = useState(false);
@@ -18,7 +18,7 @@ const ColorBox: React.FC<{ color: any; index: number }> = (props) => {
     <ColorBoxWrapper
       style={{ backgroundColor: `${hexValue}` }}
       className='color-box'
-      index={props.index}
+      index={index}
       onClick={() => {
         setCopy(true);
         navigator.clipboard.writeText(hexValue);
@@ -32,7 +32,11 @@ const ColorBox: React.FC<{ color: any; index: number }> = (props) => {
     >
       <p>{hexValue}</p>
       <p>{weight}%</p>
-      {clip &&  <div className='copy'><FaCopy /></div>}
+      {clip && (
+        <div className='copy'>
+          <FaCopy />
+        </div>
+      )}
       {copy && <p className='last'>copied to clipboard</p>}
     </ColorBoxWrapper>
   );
