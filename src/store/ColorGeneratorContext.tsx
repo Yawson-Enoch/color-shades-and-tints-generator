@@ -8,12 +8,7 @@ import {
 } from 'react';
 import Values from 'values.js';
 
-const ColorsContext = createContext<any>({
-  list: [],
-  onInputTextChange: (e: ChangeEvent<HTMLInputElement>) => {},
-  onInputNumberChange: (e: ChangeEvent<HTMLInputElement>) => {},
-  onFormSubmit: (e: FormEvent) => {},
-});
+const ColorsContext = createContext<any>({} as any);
 
 const ColorContextProvider: FC = ({ children }) => {
   const [color, setColor] = useState('blue');
