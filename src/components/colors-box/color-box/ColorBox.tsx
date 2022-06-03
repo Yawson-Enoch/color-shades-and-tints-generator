@@ -9,9 +9,10 @@ const ColorBox = ({ color, index }: any) => {
   const [clip, setClip] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       copy && setCopy(false);
     }, 1000);
+    return () => clearTimeout(timer);
   }, [copy]);
 
   return (
